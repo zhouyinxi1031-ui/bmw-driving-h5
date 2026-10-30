@@ -1,6 +1,6 @@
 import { STATIONS, COURSES, getCourse, getStation, getSessions, money, STATUS } from './data.js';
 import { readState, saveState, createInitialState, maskPhone, escapeHtml as esc, validateRegistration, createOrder, transitionOrder } from './model.js';
-import { initMotion, mountMotion, playIntro, toggleMotion } from './motion.js';
+import { initMotion, mountMotion, playIntro, toggleMotion } from './motion.js?v=20261030-r2';
 
 const app = document.querySelector('#app');
 let state = readState();
@@ -30,7 +30,7 @@ const paths = {
 const icon = (name, cls = '') => `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name] || paths.arrow}"/></svg>`;
 const mMark = () => '<img class="m-mark" src="assets/bmw-m-mark.svg" alt="BMW M" />';
 const brand = () => `<a class="brand" href="#/" aria-label="BMW 精英驾驶首页"><img class="roundel" src="assets/bmw-roundel.svg" alt="BMW" /><span class="brand-divider"></span>${mMark()}<span class="brand-name">BMW 精英驾驶培训<small>BMW DRIVING EXPERIENCE</small></span></a>`;
-const track = s => s.trackImage ? `<span class="track-outline" role="img" aria-label="${s.venue}，${s.trackLayout}" title="${s.trackLayout}"><span class="track-map-shape" style="--track-map:url('${s.trackImage}')"></span></span>` : `<span class="track-outline track-pending" role="img" aria-label="冰雪驾驶场地尚待公布"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M24 5v38M7.5 14.5l33 19M7.5 33.5l33-19M18 9l6 6 6-6M18 39l6-6 6 6M8 22l8-2-2-8M40 26l-8 2 2 8M8 26l8 2-2 8M40 22l-8-2 2-8"/></svg><small>场地待公布</small></span>`;
+const track = s => s.trackImage ? `<span class="track-outline" role="img" aria-label="${s.venue}，${s.trackLayout}" title="${s.trackLayout}"><span class="track-map-shape" style="--track-map:url('${s.trackImage}?v=20261030-r2')"></span></span>` : `<span class="track-outline track-pending" role="img" aria-label="冰雪驾驶场地尚待公布"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M24 5v38M7.5 14.5l33 19M7.5 33.5l33-19M18 9l6 6 6-6M18 39l6-6 6 6M8 22l8-2-2-8M40 26l-8 2 2 8M8 26l8 2-2 8M40 22l-8-2 2-8"/></svg><small>场地待公布</small></span>`;
 const circuitReference = s => !s.trackImage ? '' : `<details class="circuit-reference"><summary><span>${icon('flag')}真实赛道布局<small>${s.trackLayout}</small></span>${icon('down')}</summary><div class="circuit-map-expanded">${track(s)}<p>按场馆公开完整布局展示。具体培训使用全长、短版或局部训练区域，以活动安排为准。</p><a class="text-link" href="${s.trackSource}" target="_blank" rel="noopener noreferrer">${s.trackSourceName}${icon('arrow')}</a>${s.trackCredit?'<small class="circuit-credit">轮廓改编自 <a href="https://commons.wikimedia.org/wiki/File:Shanghai_International_Racing_Circuit_track_map.svg" target="_blank" rel="noopener noreferrer">Will Pittenger</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a></small>':''}</div></details>`;
 const href = path => `#${path}`;
 const link = (path, text, cls = 'primary-button') => `<a class="${cls}" href="${href(path)}">${text}${icon('arrow')}</a>`;

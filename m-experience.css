@@ -218,12 +218,11 @@ body{background:#08090a}
 /* First-visit M start: photographic heritage, not a substitute signing/loading screen. */
 .intro-playing{overflow:hidden}
 .m-intro{position:fixed;inset:0;z-index:200;background:#080a0d;color:#f7f7f4;overflow:hidden}
+.m-intro:focus{outline:none}
 .intro-inner{position:relative;margin:auto;width:100%;max-width:520px;height:100%;min-height:520px;display:flex;flex-direction:column;padding:0 25px}
 .intro-header{display:flex;align-items:center;gap:14px;min-height:91px;position:relative;z-index:3}
 .intro-header>img{width:57px;height:27px;object-fit:contain}
 .intro-header>span{font:400 8px 'Barlow Condensed',sans-serif;letter-spacing:1.8px;color:#9299a3;line-height:1.5;max-width:110px}
-.intro-skip{margin-left:auto;min-width:54px;min-height:44px;display:flex;align-items:center;justify-content:flex-end;gap:9px;font-size:11px;padding:0;color:#d2d8e1}
-.intro-skip>span{font-size:18px}
 .intro-copy{margin-top:clamp(18px,6vh,60px);position:relative;z-index:2}
 .intro-kicker{font:400 9px 'Barlow Condensed',sans-serif;letter-spacing:3px;color:#8f99a8;display:block;margin-bottom:8px}
 .intro-copy h2{font:600 clamp(68px,22vw,108px)/.95 'Barlow Condensed',sans-serif;letter-spacing:-2px;white-space:nowrap}

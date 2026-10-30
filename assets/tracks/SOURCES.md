@@ -6,7 +6,7 @@ Verified 2026-10-30. These diagrams identify public venue configurations. They d
 
 Asset: `chengdu-tianfu.svg`.
 
-Full 3.265 km configuration shown in the 2026 TCR World Tour Chengdu circuit map (19 turns, anti-clockwise). The original vector outline path is retained. Display bounding box and monochrome fill were set; event labels, map grid and other artwork are omitted. The source drawing has a slightly hand-drawn line texture. A small top-left opening in the promotional drawing is bridged with a short curve along the adjacent tangents for icon-size legibility; the remaining outline is unchanged.
+Full 3.265 km configuration shown in the 2026 TCR World Tour Chengdu circuit map (19 turns, anti-clockwise). The display vector is now a single closed centreline with a uniform stroke, derived from the source ribbon's medial line. Pixel-scale brush texture is smoothed and the small T13 opening is joined; the source's circuit shape, hairpins and orientation are retained. This replaces the earlier variable-width filled ribbon and separate patch, which left the upper-left section faint and visibly uneven at small sizes. Event labels, map grid and other artwork are omitted. This is a display diagram, not a survey drawing.
 
 Official source: https://www.fiatcrworldtour.com/images/2026/Circuits_new/Maps/FIA-TCR-WT_2026_Circuit_CHINA_1.pdf
 

@@ -87,20 +87,19 @@ export async function playIntro({automatic=false}={}){
   if(automatic&&reduced())return;
   const previousFocus=document.activeElement;
   const root=document.createElement('section');
-  root.id='m-intro';root.className='m-intro';root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-labelledby','m-intro-title');
-  root.innerHTML=`<div class="intro-inner"><header class="intro-header"><img src="assets/bmw-m-mark.svg" alt="BMW M"/><span>BMW DRIVING EXPERIENCE</span><button class="intro-skip" aria-label="跳过 M 开场动画">跳过 <span aria-hidden="true">↗</span></button></header><div class="intro-copy"><span class="intro-kicker">HERITAGE IN MOTION</span><h2 id="m-intro-title">M POWER<span>从热爱，到此刻。</span></h2></div><div class="intro-scene"><img class="intro-photo" src="assets/m3-e30-motion.jpg" alt="经典 BMW M3 E30 驶过山间道路"/><div class="intro-photo-shade"></div><div class="intro-speed-lines" aria-hidden="true"><i></i><i></i><i></i></div><span class="intro-car-label">BMW M3 E30 <i>/</i> THE ORIGINAL SPIRIT.</span></div><div class="intro-footer"><div class="intro-load-line" aria-hidden="true"><i></i><i></i><i></i></div><p>赛车基因，点燃此刻。</p><span>2027 BMW 精英驾驶培训</span><small>经典车型为品牌传承展示，非本期课程用车</small></div></div>`;
+  root.id='m-intro';root.className='m-intro';root.tabIndex=-1;root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-labelledby','m-intro-title');
+  root.innerHTML=`<div class="intro-inner"><header class="intro-header"><img src="assets/bmw-m-mark.svg" alt="BMW M"/><span>BMW DRIVING EXPERIENCE</span></header><div class="intro-copy"><span class="intro-kicker">HERITAGE IN MOTION</span><h2 id="m-intro-title">M POWER<span>从热爱，到此刻。</span></h2></div><div class="intro-scene"><img class="intro-photo" src="assets/m3-e30-motion.jpg" alt="经典 BMW M3 E30 驶过山间道路"/><div class="intro-photo-shade"></div><div class="intro-speed-lines" aria-hidden="true"><i></i><i></i><i></i></div><span class="intro-car-label">BMW M3 E30 <i>/</i> THE ORIGINAL SPIRIT.</span></div><div class="intro-footer"><div class="intro-load-line" aria-hidden="true"><i></i><i></i><i></i></div><p>赛车基因，点燃此刻。</p><span>2027 BMW 精英驾驶培训</span><small>经典车型为品牌传承展示，非本期课程用车</small></div></div>`;
   document.body.append(root);
   document.body.classList.add('intro-playing');
   const surfaces=[...document.querySelectorAll('.phone-shell,.desktop-intro,.preview-nav')];
   const priorInert=surfaces.map(el=>el.inert);
   surfaces.forEach(el=>el.inert=true);
-  const skip=root.querySelector('.intro-skip');
   let closed=false;
   let release;
   const finished=new Promise(resolve=>release=resolve);
   const onKey=event=>{
     if(event.key==='Escape'){event.preventDefault();close();}
-    if(event.key==='Tab'){event.preventDefault();skip.focus();}
+    if(event.key==='Tab'){event.preventDefault();root.focus({preventScroll:true});}
   };
   const close=async()=>{
     if(closed)return;closed=true;clearTimeout(timer);document.removeEventListener('keydown',onKey);
@@ -112,7 +111,7 @@ export async function playIntro({automatic=false}={}){
     release();
   };
   introClose=close;
-  skip.addEventListener('click',close);document.addEventListener('keydown',onKey);skip.focus({preventScroll:true});
+  document.addEventListener('keydown',onKey);root.focus({preventScroll:true});
   // A fixed cap prevents an image/network failure from trapping the interface.
   const timer=setTimeout(close,reduced()?800:2200);
   const photo=root.querySelector('.intro-photo');
