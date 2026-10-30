@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c0d10" />
+    <meta name="description" content="BMW 精英驾驶培训交互前端预览。探索赛季排期、课程体验与报名旅程。" />
+    <title>BMW 精英驾驶 · 2027</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./m-experience.css" />
+    <link rel="preload" href="./assets/hero-track.jpg" as="image" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+    <aside class="desktop-intro" aria-label="预览说明">
+      <img class="desktop-m-logo" src="./assets/bmw-m-mark.svg" alt="BMW M" />
+      <p class="desktop-kicker">PRECISION IN MOTION</p>
+      <h1>每一次心跳，<br />都有 M 的节奏。</h1>
+      <p class="desktop-description">2027 BMW 精英驾驶培训<br />移动端交互体验</p>
+      <div class="desktop-motion-controls"><button data-action="replay-intro"><span class="play-mini" aria-hidden="true"></span>重播 M 开场</button><button data-action="toggle-motion" aria-pressed="false">减少动态效果</button></div>
+      <div class="desktop-footnote"><span class="live-dot"></span> FRONTEND EXPERIENCE<br /><small>演示排期与价格 · 登录及交易尚未接入</small></div>
+    </aside>
+    <div class="phone-shell">
+      <div class="device-bar" aria-hidden="true"><span>9:41</span><span class="device-island"></span><span class="device-signals">▮▮▮ <span>5G</span> ▰</span></div>
+      <main id="app" tabindex="-1"></main>
+      <div id="route-progress" class="route-progress" aria-hidden="true"><i></i><i></i><i></i></div>
+      <nav id="bottom-nav" class="bottom-nav" aria-label="主要导航"></nav>
+    </div>
+    <aside class="preview-nav" aria-label="页面预览导航" id="preview-nav"></aside>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <div id="modal-root"></div>
+    <noscript>请启用 JavaScript 以预览课程与报名流程。</noscript>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
